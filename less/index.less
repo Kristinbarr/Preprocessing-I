@@ -1,8 +1,13 @@
 // Is this working?
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
+
+@dark: #213;
+@accent: #d9ff00;
+@secondary: #808080;
+@accentgrey: rgb(219, 219, 255);
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -13,8 +18,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -25,12 +30,13 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
 	line-height: 1;
+	background-color: @accent;
 }
 ol, ul {
 	list-style: none;
@@ -50,10 +56,79 @@ table {
 
 /* Set every element's box-sizing to border-box */
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
 }
 
 html, body {
-    height: 100%;
+	height: 100%;
 }
 
+.container {
+	width: 1000px auto;
+	font-family: "Roboto", Arial, Helvetica, sans-serif;
+	font-size: 2rem;
+	line-height: 2.1rem;
+	color: @dark;
+
+	@media(max-width: 800px) {
+		width: 100%;
+	}
+
+	@media(max-width: 500px) {
+		width: 100%;
+	}
+	header {
+		.nav {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-end;
+			padding: 2rem 2rem;
+			margin-right: 2rem;
+			li {
+				padding: 0 2rem;
+				font-size: 1.5rem;
+				// text-transform: uppercase;
+			}
+		}
+
+	}
+
+	section {
+		.top-container {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
+			width: 70rem;
+			padding: 2rem;
+			border: 2px solid @dark;
+			margin: 2rem 5rem;
+			background-color: @accentgrey;
+			.top-content {
+				text-transform: uppercase;
+				.top-name {
+					font-size: 2rem;
+				}
+				.top-name-sub {
+					font-size: 2rem;
+				}
+			}
+			.kb-img {
+				box-shadow: 5px 5px @accent, 10px 10px @dark;
+				margin: 1em 0;
+			}
+			.bg-img {
+				width: 60%;
+			}
+		}
+
+	}
+
+	footer {
+		background-color: @secondary;
+	}
+
+}
