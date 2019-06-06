@@ -1,8 +1,30 @@
 // Is this working?
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
+
+@purpdark: rgb(44, 22, 66);
+@purpmid: rgb(125, 69, 141);
+@purplight: rgb(219, 219, 255);
+@neutralgrey: rgb(233, 233, 233);
+@accent: rgb(231, 255, 95);
+
+/* mixins */
+.flexed {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.font {
+	font-family: "Roboto", Arial, Helvetica, sans-serif;
+	font-size: 1rem;
+	line-height: 1.1rem;
+	color: @purpdark;
+}
+
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -13,8 +35,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -25,12 +47,13 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
 	line-height: 1;
+	background-color: @accent;
 }
 ol, ul {
 	list-style: none;
@@ -50,10 +73,140 @@ table {
 
 /* Set every element's box-sizing to border-box */
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html, body {
-    height: 100%;
+	height: 100%;
 }
 
+.container {
+	width: 1000px auto;
+
+	@media(max-width: 500px) {
+		width: 100%;
+
+		header {
+			.nav {
+				.flexed();
+				justify-content: flex-end;
+				padding: 0;
+				margin-right: .5rem;
+				li {
+					.font();
+					padding: 0 0px;
+					font-size: 1rem;
+				}
+			}
+		}
+		section {
+			.top-container {
+				padding: .5rem;
+				border: 2px solid @purpdark;
+				margin: .6rem 2rem;
+				.kb-img {
+					width: 200px;
+					border: 2px solid @purpdark;
+				}
+				.top-content {
+					margin: 1rem;
+				}
+			}
+		}
+	}
+
+	header {
+		.nav {
+			.flexed();
+			justify-content: flex-end;
+			padding: 1.5rem;
+			margin-right: 1rem;
+			li {
+				.font();
+				padding: 0 2rem;
+				font-size: 1.2rem;
+			}
+		}
+	}
+
+	section {
+		.font();
+		.top-container {
+			.flexed();
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			align-items: baseline;
+			padding: 1rem;
+			border: 3px solid @purpdark;
+			margin: 1rem 3rem;
+			background-color: @purplight;
+			.top-content {
+				text-transform: uppercase;
+				margin: 2rem;
+				.top-name {
+					font-size: 2rem;
+					display: block;
+					margin: 1rem 0;
+				}
+				.top-name-sub {
+					font-size: 1.2rem;
+					display: block;
+				}
+			}
+			.kb-img {
+				border: 3px solid @purpdark;
+				box-shadow: 8px 8px @accent, -8px -8px @purpmid;
+				margin: 2rem;
+				width: 100%;
+				overflow: hidden;
+			}
+			p {
+				padding: 2rem;
+				text-align: right;
+			}
+		}
+
+		.mid-container {
+			.flexed();
+			flex-direction: row-reverse;
+			align-items: flex-end;
+
+			h3 {
+				text-transform: uppercase;
+				line-height: 2rem;
+				font-size: 2em;
+				padding: .6rem;
+			}
+
+			.mid-container-skills {
+				text-align: right;
+				padding: 3rem;
+				ul {
+					.flexed();
+					flex-direction: column;
+					// justify-content: flex-end;
+					align-items: flex-end;
+				}
+			}
+
+			.mid-container-experience {
+				.title-date {
+					list-style-type: circle;
+				}
+			}
+		}
+
+	}
+
+	footer {
+		.flexed();
+		.font();
+		background-color: @purpdark;
+		padding: 2em;
+		margin-top: 5rem;
+		// text-align: center;
+		font-size: .8rem;
+		color: @purplight;
+	}
+
+}
